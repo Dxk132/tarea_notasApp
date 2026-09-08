@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">tarea_notasApp</string>
-    <string name="txtAgregarNota">
-        Agregar Nota
-    </string>
+    <string name="txtAgregarNota">Agregar Nota</string>
+    <string name="etTitulo">titulo de la nota</string>
+    <string name="etDescripcion">descripcion de la nota</string>
+
 </resources>

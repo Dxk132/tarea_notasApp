@@ -1,7 +1,7 @@
 package com.example.tarea_notasapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,9 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.FABAgregarNota.setOnClickListener {
-            Toast.makeText(applicationContext,
-                "has presionado en el FAB",
-                Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, AgregarNotaActivity::class.java)
+            startActivity(intent)
         }
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->

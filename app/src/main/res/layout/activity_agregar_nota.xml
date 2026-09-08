@@ -6,9 +6,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="15dp"
     tools:context=".AgregarNotaActivity">
+
     <TextView
         android:id="@+id/txtAgregarNota"
         android:text="@string/txtAgregarNota"
@@ -19,7 +19,9 @@
         android:layout_marginTop="15dp"
         android:textColor="@color/morado"
         android:textSize="25sp"
+        android:padding="10dp"
         />
+
     <ImageView
         android:id="@+id/ivGuardarNota"
         android:src="@drawable/check"
@@ -27,9 +29,39 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="Guardar nota" />
+
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILtitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-</RelativeLayout>
+        android:layout_below="@id/txtAgregarNota"
+        android:layout_marginTop="15dp"
+        android:padding="10dp">
 
+        <EditText
+            android:id="@+id/etTitulo"
+            android:hint="@string/etTitulo"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TILdescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TILtitulo"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/etDescripcion"
+            android:hint="@string/etDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</RelativeLayout>

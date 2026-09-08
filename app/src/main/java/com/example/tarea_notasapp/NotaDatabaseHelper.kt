@@ -1,10 +1,11 @@
 package com.example.tarea_notasapp
 
-import android.database.sqlite.SQLiteOpenHelper
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
 
-class notaDataBaseHelper (context: Context) : SQLiteOpenHelper (
+class NotaDatabaseHelper(context: Context) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
 ) {
     override fun onCreate(db: SQLiteDatabase?) {
@@ -21,6 +22,16 @@ class notaDataBaseHelper (context: Context) : SQLiteOpenHelper (
         val dropTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
         db?.execSQL(dropTableQuery)
         onCreate(db)
+    }
+
+    fun insertNota(nota: Nota) {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_TITLE, nota.titulo)
+            put(COLUMN_DESCRIPTION, nota.descripcion)
+        }
+        db.insert(TABLE_NAME, null, values)
+        db.close()
     }
 
     companion object {
