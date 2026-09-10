@@ -30,7 +30,7 @@ class AgregarNotaActivity : AppCompatActivity() {
                 finish()
                 Toast.makeText(this, "Nota guardada", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Por favor llene todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor llene los campos", Toast.LENGTH_SHORT).show()
             }
         }
 

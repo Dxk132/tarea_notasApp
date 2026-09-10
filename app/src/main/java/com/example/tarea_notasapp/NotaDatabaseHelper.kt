@@ -43,3 +43,4 @@ class NotaDatabaseHelper(context: Context) : SQLiteOpenHelper(
         private const val COLUMN_DESCRIPTION = "descripcion"
     }
 }
+
