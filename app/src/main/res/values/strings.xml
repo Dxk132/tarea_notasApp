@@ -3,5 +3,7 @@
     <string name="txtAgregarNota">Agregar Nota</string>
     <string name="etTitulo">titulo de la nota</string>
     <string name="etDescripcion">descripcion de la nota</string>
-
+    <string name="txtNotas">Notas</string>
+    <string name="item_titulo">Titulo</string>
+    <string name="item_descripcion">Description</string>
 </resources>
