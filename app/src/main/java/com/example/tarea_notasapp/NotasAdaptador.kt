@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class NotasAdaptador(
     private var notas : List<Nota>,context: Context): RecyclerView.Adapter<NotasAdaptador.NotaViewHolder>(){
+
+        private val db : NotaDatabaseHelper = NotaDatabaseHelper(context)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotaViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nota,parent,false)
         return NotaViewHolder(view)
@@ -32,6 +34,12 @@ class NotasAdaptador(
             Toast.makeText(holder.itemView.context, "El id de la nota selecionada es ${nota.id}", Toast.LENGTH_SHORT).show()
         }
 
+        holder.ivEliminar.setOnClickListener {
+            db.deleteNota(nota.id)
+            refrescarlista(db.getAllNotas())
+            Toast.makeText(holder.itemView.context, "Nota eliminada", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
@@ -43,6 +51,8 @@ class NotasAdaptador(
         val itemTitulo : TextView = itemView.findViewById(R.id.item_titulo)
         val itemDescripcion : TextView = itemView.findViewById(R.id.item_descripcion)
         val ivActualizar : ImageView = itemView.findViewById(R.id.ivActualizar)
+
+        val ivEliminar : ImageView = itemView.findViewById(R.id.ivEliminar)
 
     }
 
