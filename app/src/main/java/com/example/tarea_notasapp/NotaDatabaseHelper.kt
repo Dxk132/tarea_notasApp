@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 
 class NotaDatabaseHelper(context: Context) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
@@ -54,7 +55,7 @@ class NotaDatabaseHelper(context: Context) : SQLiteOpenHelper(
         return listaNotas
     }
 
-    fun getNotaById(idNota: Int): Nota {
+    fun getIdNota(idNota: Int): Nota {
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_NAME WHERE $COLUMN_ID = $idNota"
         val cursor = db.rawQuery(query, null)
@@ -67,6 +68,19 @@ class NotaDatabaseHelper(context: Context) : SQLiteOpenHelper(
         cursor.close()
         db.close()
         return Nota(id,titulo,descripcion)
+    }
+
+    fun updateNota(nota: Nota){
+        val db = writableDatabase
+        val values = contentValuesOf().apply {
+            put(COLUMN_TITLE, nota.titulo)
+            put(COLUMN_DESCRIPTION, nota.descripcion)
+        }
+
+        val whereClause = "$COLUMN_ID = ?"
+        val whereArgs = arrayOf(nota.id.toString())
+        db.update(TABLE_NAME, values , whereClause, whereArgs)
+        db.close()
     }
 
     companion object {
